@@ -4,10 +4,12 @@ export const site = {
   emoji: '🌿',
   // Short line shown under the name in the sidebar.
   tagline: "I'm Terretino, I'm a professional iOS Developer" +
-    "and has been developing iOS App since 2018. This is my digital playground where I can share my thoughts", // TODO: finish this sentence
+    "and has been developing iOS App since 2020. This is my digital playground where I can share my thoughts", // TODO: finish this sentence
   nav: [
     { label: 'Blog', to: '/blog' },
     { label: 'About Me', to: '/about' },
+    { label: 'Project', to: '/project' },
+    { label: 'Book', to: '/book' }
   ],
   author: {
     name: 'Terretino', // TODO: your name
