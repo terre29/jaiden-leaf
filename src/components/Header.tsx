@@ -1,6 +1,7 @@
 import { Link, NavLink } from 'react-router'
 import { site } from '../site'
 import SocialLinks from './SocialLinks'
+import ThemeToggle from './ThemeToggle'
 
 // The site menu. It has two looks:
 //   Phones & tablets (below 1024px): a bar across the top.
@@ -21,7 +22,7 @@ export default function Header() {
     // lg:shrink-0      -> never gets squeezed by the page content
     // lg:border-b-0 lg:border-r -> swap the bottom line for a line on the right
     <header className="sticky top-0 z-10 border-b border-line bg-bg/80 backdrop-blur
-                       lg:h-screen lg:w-60 lg:shrink-0 lg:border-b-0 lg:border-r">
+                       lg:h-screen lg:w-70 lg:shrink-0 lg:border-b-0 lg:border-r">
       {/*
         --- Top bar ---
         flex items-center justify-between -> logo on the left, menu on the right, in one row
@@ -39,11 +40,35 @@ export default function Header() {
       */}
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4
                 lg:h-full lg:flex-col lg:items-start lg:justify-start lg:gap-8 lg:px-6 lg:py-10">
-        {/* Logo: flex + gap-2 puts the emoji and name side by side with a small gap */}
-        <Link to="/" className="flex items-center gap-2 font-semibold text-ink hover:text-leaf">
-          <span className="text-xl">{site.emoji}</span>
-          <span>{site.name}</span>
-        </Link>
+        {/*
+          Name + tagline, grouped in one wrapper <div>.
+          Why a wrapper? The parent puts a gap-8 (2rem) between each of its children.
+          Grouping the name and tagline makes them ONE child, so they stay close together
+          and the big gap only comes after the tagline.
+          lg:w-full -> as wide as the sidebar, so the divider line spans the full width
+        */}
+        <div className="lg:w-full">
+          {/* Logo: flex + gap-2 puts the emoji and name side by side with a small gap */}
+          <Link to="/" className="flex items-center gap-2 font-semibold text-ink hover:text-leaf">
+            <span className="text-xl">{site.emoji}</span>
+            <span>{site.name}</span>
+            <ThemeToggle />
+          </Link>
+
+          {/*
+            Divider + tagline.
+            hidden lg:block -> hidden in the phone top bar (only 4rem tall, no room),
+                               shown in the sidebar
+            <hr>            -> a horizontal line
+            my-3            -> 0.75rem of space above and below the line
+            border-line     -> same line colour as the header's borders
+            text-sm text-muted -> smaller, softer text so the name stays the focus
+          */}
+          <div className="hidden lg:block">
+            <hr className="my-3 border-line" />
+            <p className="text-justify text-sm text-muted">{site.tagline}</p>
+          </div>
+        </div>
 
         {/*
           Top bar: flex items-center gap-1 -> links in a row with a small gap
@@ -51,7 +76,7 @@ export default function Header() {
                    lg:flex-col      -> links stacked vertically
                    lg:items-stretch -> each link full width, so its highlight is a full-width bar
         */}
-        <nav className="flex items-center gap-1 lg:w-full lg:flex-col lg:items-stretch">
+        <nav className="flex items-center gap-1 lg:w-full lg:flex-col lg:items-stretch lg:self-start">
           {site.nav.map((item) => (
             <NavLink
               key={item.to}

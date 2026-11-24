@@ -1,7 +1,17 @@
 <!doctype html>
-<html lang="en">
+<!-- data-theme="light" -> the site starts in light mode (see "Light mode" in src/index.css) -->
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // If the visitor picked a theme before, use it. This runs BEFORE the page is drawn,
+      // so you never see a flash of the wrong colours while React is loading.
+      // try/catch: some browsers block localStorage (e.g. private mode); then we keep light.
+      try {
+        const saved = localStorage.getItem('theme')
+        if (saved) document.documentElement.dataset.theme = saved
+      } catch {}
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />

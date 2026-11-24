@@ -6,9 +6,8 @@ import { sortedPosts } from '../posts'
 // Home page: built by stacking components.
 export default function HomePage() {
   return (
-    <div className="mx-auto max-w-3xl">
+    <div className="mx-auto max-w-5xl">
       <Intro />
-
       {/* mt-16 -> big gap between sections so each one has room to breathe */}
       <section className="mt-16">
         {/* Section header: title on the left, "View all" on the right */}

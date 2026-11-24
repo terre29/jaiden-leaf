@@ -30,6 +30,29 @@
   --font-mono: "Nunito", ui-sans-serif, system-ui, sans-serif;
 }
 
+/*
+  2b. Light mode.
+  The colours above are the DARK theme. When <html> has data-theme="light",
+  this block swaps every colour variable for a light one. Because every class
+  (bg-bg, text-ink, border-line, ...) reads these variables, the whole site
+  switches at once: no component needs changing.
+  The toggle button (src/components/ThemeToggle.tsx) sets data-theme.
+*/
+:root[data-theme="light"] {
+  color-scheme: light; /* light scrollbars and form controls */
+
+  --color-bg: #fafaf7;        /* warm off-white page, easier on the eyes than pure white */
+  --color-surface: #f0f3ef;   /* cards, code blocks: a touch darker than the page */
+  --color-line: #dde4df;      /* borders and dividers */
+
+  --color-ink: #1f2a24;       /* main text: near-black with a hint of green */
+  --color-muted: #5c6b63;     /* secondary text */
+
+  /* Darker green than in dark mode: a pale green on a white page is hard to read */
+  --color-leaf: #3f7a5a;
+  --color-leaf-soft: #3f7a5a1a;
+}
+
 /* 3. Base styles applied to plain HTML elements. */
 @layer base {
   html {

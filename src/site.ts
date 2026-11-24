@@ -1,13 +1,16 @@
 // Site-wide settings. Change the values here and they update everywhere.
 export const site = {
-  name: 'My Blog', // TODO: replace with your blog name
+  name: 'Terretino', // TODO: replace with your blog name
   emoji: '🌿',
+  // Short line shown under the name in the sidebar.
+  tagline: "I'm Terretino, I'm a professional iOS Developer" +
+    "and has been developing iOS App since 2018. This is my digital playground where I can share my thoughts", // TODO: finish this sentence
   nav: [
     { label: 'Blog', to: '/blog' },
-    { label: 'About', to: '/about' },
+    { label: 'About Me', to: '/about' },
   ],
   author: {
-    name: 'Your Name', // TODO: your name
+    name: 'Terretino', // TODO: your name
     avatar: '🌱', // TODO: later you can swap this for a photo
     bio: "I'm a developer writing about the things I learn along the way: code, tools, and the occasional detour. This blog is my notebook in public.",
   },
