@@ -1,0 +1,74 @@
+/* 1. Load Tailwind. This one line gives you every utility class (flex, p-4, text-xl, ...). */
+@import "tailwindcss";
+
+/* Typography plugin: adds the "prose" class, which styles a whole article
+   (headings, paragraphs, lists, code, quotes, tables) in one go. */
+@plugin "@tailwindcss/typography";
+
+/*
+  2. Your design tokens.
+  Every variable named --color-<name> becomes a set of classes:
+    --color-leaf  ->  text-leaf, bg-leaf, border-leaf, ...
+  Change a colour here and the whole site updates.
+*/
+@theme {
+  /* Dark, slightly green-tinted backgrounds */
+  --color-bg: #0f1412;        /* page background */
+  --color-surface: #161d1a;   /* cards, header */
+  --color-line: #25302b;      /* borders and dividers */
+
+  /* Text */
+  --color-ink: #dbe3de;       /* main text */
+  --color-muted: #8b9a92;     /* dates, secondary text */
+
+  /* Accent: a calm sage green */
+  --color-leaf: #8fbfa3;
+  --color-leaf-soft: #8fbfa31f; /* same green, ~12% opacity, for subtle backgrounds */
+
+  /* Fonts */
+  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Nunito", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* 3. Base styles applied to plain HTML elements. */
+@layer base {
+  html {
+    color-scheme: dark; /* dark scrollbars and form controls */
+    scroll-behavior: smooth; /* clicking a table-of-contents link glides instead of jumping */
+  }
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+  }
+  ::selection {
+    @apply bg-leaf text-bg;
+  }
+}
+
+/*
+  4. Article colours.
+  The "prose" class has grey colours built in. These variables swap them
+  for our theme colours. Add the class "prose-leaf" next to "prose" to use them.
+*/
+.prose-leaf {
+  --tw-prose-body: var(--color-ink);
+  --tw-prose-headings: var(--color-ink);
+  --tw-prose-lead: var(--color-muted);
+  --tw-prose-links: var(--color-leaf);
+  --tw-prose-bold: var(--color-ink);
+  --tw-prose-counters: var(--color-muted);
+  --tw-prose-bullets: var(--color-leaf);
+  --tw-prose-hr: var(--color-line);
+  --tw-prose-quotes: var(--color-ink);
+  --tw-prose-quote-borders: var(--color-leaf);
+  --tw-prose-captions: var(--color-muted);
+  --tw-prose-code: var(--color-leaf);
+  --tw-prose-pre-code: var(--color-ink);
+  --tw-prose-pre-bg: var(--color-surface);
+  --tw-prose-th-borders: var(--color-line);
+  --tw-prose-td-borders: var(--color-line);
+
+  /* Code should always be monospace, even though --font-mono is now Nunito. */
+  & :where(code, pre) {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+  }
+}
