@@ -11,6 +11,7 @@ export const now = {
     { label: 'Working on', text: 'iOS apps at my day job.' },
     { label: 'Learning', text: 'Web development: React, TypeScript and Tailwind, by building this site.' },
     { label: 'Reading', text: 'Atomic Habits by James Clear.' },
+    { label: 'Playing', text: 'Genshin Impact & Crusader Kings III' }
   ],
 }
 

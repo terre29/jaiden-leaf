@@ -32,7 +32,7 @@ export default function AboutPage() {
       </Section>
 
       {/* ---------- Now ---------- */}
-      <Section title="Now" subtitle={`Updated ${formatDate(now.updated)}`}>
+      <Section title="What I'm doing now" subtitle={`Updated ${formatDate(now.updated)}`}>
         {/* Same two-column trick as the post list: a 7rem label column + the rest.
             Phones: label above text (flex-col). From 640px: side by side (sm:grid). */}
         <dl className="divide-y divide-line">
