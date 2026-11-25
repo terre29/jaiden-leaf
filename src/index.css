@@ -6,6 +6,15 @@
 @plugin "@tailwindcss/typography";
 
 /*
+  The dark: prefix, e.g. dark:hidden, dark:block.
+  By default Tailwind's dark: follows the computer's setting. This line makes it follow
+  OUR toggle instead: dark: classes apply when <html data-theme="dark"> (see ThemeToggle.tsx).
+  Most of the site doesn't need dark: at all, the colour variables switch by themselves.
+  It's for things that can't use those variables, like choosing between two image files.
+*/
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/*
   2. Your design tokens.
   Every variable named --color-<name> becomes a set of classes:
     --color-leaf  ->  text-leaf, bg-leaf, border-leaf, ...
