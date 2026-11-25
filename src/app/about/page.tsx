@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import Tag from '../../components/Tag'
-import { books, now, tools, type Book } from '../../about'
+import { books, now, type Book } from '../../about'
 import { formatDate } from '../../posts'
 // "?raw" tells Vite: give me this file's text as a plain string.
 // (Blog posts are loaded the same way in src/posts.ts.)
@@ -25,7 +25,7 @@ export default function AboutPage() {
         <a
           href="/resume.pdf"
           download="Terretino.pdf"
-          className="rounded-md bg-leaf px-4 py-2 text-sm font-semibold text-bg transition-opacity hover:opacity-90"
+          className="inline-block rounded-md bg-leaf px-4 py-2 text-sm font-semibold text-bg transition-opacity hover:opacity-90"
         >
           Download Resume
         </a>
