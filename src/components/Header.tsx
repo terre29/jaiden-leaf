@@ -100,7 +100,8 @@ export default function Header() {
           </button>
           <nav
             id="site-menu"
-            className={`${menuOpen ? 'flex' : 'hidden'} absolute shadow-lg right-4 min-w-44 mt-2 top-full flex-col gap-1 border rounded-lg border-line bg-surface p-2 lg:static lg:flex lg:w-full lg:items-stretch lg:self-start lg:border-0 lg:bg-transparent lg:p-0`}>
+            className={`${menuOpen ? 'flex' : 'hidden'} absolute shadow-lg right-4 min-w-44 mt-2 top-full flex-col gap-1 border rounded-lg border-line bg-surface p-2 lg:static lg:flex lg:w-full lg:items-stretch lg:self-start lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none lg:rounded-none lg:mt-0 lg:min-w-0
+`}>
             {site.nav.map((item) => (
               <NavLink
                 key={item.to}
