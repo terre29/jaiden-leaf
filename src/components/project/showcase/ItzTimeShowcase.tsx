@@ -13,14 +13,14 @@ export default function ItzTimeShowcase({ project, index }: ShowcaseProps) {
         /*
           style --brand   -> stores this project's colour in a CSS variable (same trick as SocialLinks),
                              so every child can use text-(--brand), bg-(--brand)/30, ...
-          py-16 md:py-24  -> big vertical space: each project gets its own "screen"
+          py-10 md:py-16  -> big vertical space: each project gets its own "screen"
           grid            -> phones: one column (picture on top, text below)
           md:grid-cols-2  -> from 768px: two columns side by side
           items-center    -> text and picture centred vertically against each other
         */
         <section
             style={{ '--brand': project.color } as CSSProperties}
-            className="grid items-baselines gap-10 py-16 md:grid-cols-2 md:gap-16 md:py-24"
+            className="grid items-center gap-12 py-10 md:grid-cols-2 md:gap-16 md:py-16"
         >
             {/*
             ---------- TEXT ----------
@@ -29,14 +29,25 @@ export default function ItzTimeShowcase({ project, index }: ShowcaseProps) {
             The HTML order never changes, only where it's drawn.
           */}
             <div className={flipped ? 'order-last' : 'order-last md:order-first'}>
-                {/* The big faded number: font-light + 40% opacity keeps it decorative, not loud */}
-                <p className="font-mono text-6xl font-light text-(--brand)/40 md:text-7xl">{number}</p>
+                {/*
+                  Spacing: only mt- (margin-top) is used, so each gap is set by ONE class.
+                  (A mb- above an mt- doesn't add up: the browser only keeps the bigger one.)
 
-                <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-5xl">{project.name}</h2>
-                <p className="mt-4 text-lg leading-relaxed text-muted">{project.tagline}</p>
+                  Tags are chosen for MEANING, classes for LOOK:
+                    the number is decoration -> <p>, the project name is the heading -> <h2>
+                */}
+                {/* The big faded number: font-light + 40% opacity keeps it decorative, not loud */}
+                <p className="text-6xl font-light text-(--brand)/40 md:text-7xl">{number}</p>
+                <h2 className="mt-4 text-xl tracking-tight">{project.name}</h2>
+                {/* Mobile-first: 30px on phones, 48px from md. text-balance -> evenly split lines */}
+                <p className="mt-16 font-mono text-3xl font-medium text-balance md:text-5xl">{project.tagline}</p>
+                {/* description is optional in projects.ts, so only draw it when there is one */}
+                {project.description && (
+                    <p className="mt-8 text-lg leading-relaxed text-muted">{project.description}</p>
+                )}
 
                 {/* [...stack, year].join(' · ') -> ['iOS', 'SwiftUI'] + '2024' -> "iOS · SwiftUI · 2024" */}
-                <p className="mt-6 font-mono text-sm text-muted">{[...project.stack, project.year].join(' · ')}</p>
+                <p className="mt-16 font-mono text-sm text-muted">{[...project.stack, project.year].join(' · ')}</p>
 
                 {/* Only draw the buttons row if there are links.
                 items-center -> the badge and the buttons line up in the middle */}

@@ -29,8 +29,7 @@ export default function PostPage() {
   return (
     /*
       TWO-COLUMN LAYOUT (only on large screens):
-      xl:grid                          -> turn on grid from 1280px wide
-                                          (below that, the left menu + article + bookmarks won't fit nicely)
+      xl:grid                          -> turn on grid from 1024px wide
       xl:grid-cols-[minmax(0,1fr)_13rem] -> article takes the rest, sidebar is 13rem
                                           (minmax(0,1fr) stops wide code blocks from stretching the column)
       xl:gap-12                        -> 3rem between them
@@ -56,8 +55,8 @@ export default function PostPage() {
           </div>
         </header>
 
-        {/* ---------- Table of contents for PHONES, TABLETS & SMALL LAPTOPS ----------
-            xl:hidden -> only shown below 1280px. <details> is a built-in
+        {/* ---------- Table of contents for PHONES ----------
+            lg:hidden -> only shown below 1024px. <details> is a built-in
             HTML element that opens and closes when you tap its <summary>. */}
         {headings.length > 0 && (
           <details className="mt-8 rounded-lg border border-line bg-surface p-4 xl:hidden">
@@ -74,8 +73,7 @@ export default function PostPage() {
             md:prose-lg      -> slightly bigger text on wider screens
             max-w-none       -> let the grid decide the width, not prose
             prose-headings:scroll-mt-24 -> when jumping to a heading, stop 6rem below
-                                           the top so the top bar (on phones/tablets)
-                                           doesn't cover it */}
+                                           the top so the sticky header doesn't cover it */}
         <div className="prose prose-leaf mt-8 max-w-none md:prose-lg prose-headings:scroll-mt-24 prose-a:no-underline hover:prose-a:underline">
           <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeSlug]}>
             {post.content}
@@ -90,9 +88,8 @@ export default function PostPage() {
       </article>
 
       {/* ---------- Table of contents for DESKTOP ----------
-          hidden xl:block -> hidden below 1280px, shown from 1280px
-          sticky top-12   -> stays in view while you scroll, 3rem from the top
-                             (no top bar on desktop, the menu is on the left) */}
+          hidden lg:block -> hidden on phones, shown from 1024px
+          sticky top-24   -> stays in view while you scroll (6rem from the top, below the header) */}
       {headings.length > 0 && (
         <aside className="hidden xl:block">
           <nav className="sticky top-12">

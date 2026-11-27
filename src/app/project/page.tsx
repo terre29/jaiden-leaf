@@ -1,10 +1,12 @@
 import type { ComponentType } from 'react'
 import ProjectShowcase, { type ShowcaseProps } from '../../components/project/ProjectShowcase'
 import ItzTimeShowcase from '../../components/project/showcase/ItzTimeShowcase'
+import SPEECHShowcase from '../../components/project/showcase/SPEECHShowcase'
 import { projects } from '../../projects'
 
 const customShowcases: Record<string, ComponentType<ShowcaseProps>> = {
   'itz-time': ItzTimeShowcase,
+  speech: SPEECHShowcase,
 }
 
 export default function ProjectPage() {

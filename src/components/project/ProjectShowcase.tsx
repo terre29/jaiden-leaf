@@ -24,7 +24,7 @@ export default function ProjectShowcase({ project, index }: ShowcaseProps) {
         */
         <section
             style={{ '--brand': project.color } as CSSProperties}
-            className="grid items-baselines gap-10 py-16 md:grid-cols-2 md:gap-16 md:py-24"
+            className="grid items-center gap-10 py-16 md:grid-cols-2 md:gap-16 md:py-24"
         >
             {/*
         ---------- TEXT ----------

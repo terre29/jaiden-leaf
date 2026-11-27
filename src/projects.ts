@@ -5,6 +5,7 @@ export type Project = {
   slug: string // short id, e.g. 'habit-tracker' (also used as React's key)
   name: string
   tagline: string // ONE sentence that sells it. A showcase, not an explanation.
+  description?: string // A short paragraph that explains what the project does and why it matters.
   year: string
   stack: string[] // platform + main tech, shown as "iOS · SwiftUI · 2024"
   color: string // the project's accent: number, glow, link hover. Pick a mid-tone so it works in light AND dark mode.
@@ -19,6 +20,9 @@ export type Project = {
   // 'mockup'          = a finished design (e.g. a tilted 3D phone with its own glow, transparent background).
   //                     Shown large and as-is: the page adds no glow, shadow or frame of its own.
   imageShape?: 'phone' | 'wide' | 'mockup'
+  // Optional dark-theme versions of `images`, in the same order.
+  // Used by showcases that swap the picture with the theme (e.g. SPEECHShowcase).
+  darkImages?: string[]
   emoji: string
 
   // Buttons under the text, drawn in this order. Leave the list empty for projects you can't link to.
@@ -40,8 +44,9 @@ export type ProjectLink =
 export const projects: Project[] = [
   {
     slug: 'itz-time',
-    name: "It's about time isn't it?",
-    tagline: 'ITZ-Time',
+    name: "ITZ-Time",
+    tagline: "Small tasks, never forget",
+    description: "Plan and create your task everyday, handle them gracefully. ITZ-Task allow you to create and store your tasks, it is also can handle interruption",
     year: '2026',
     stack: ['iOS', 'SwiftUI'],
     color: '#E67E22',
@@ -53,17 +58,19 @@ export const projects: Project[] = [
     ],
   },
   {
-    // Example of a project that ISN'T an app: no App Store badge, a website button instead.
-    slug: 'project-two',
-    name: 'Project Two',
-    tagline: 'Another short line about what it does and why it matters.',
-    year: '2025',
-    stack: ['Web', 'React'],
-    color: '#5b8def', // blue
-    emoji: '🚀',
+    slug: 'speech',
+    name: 'SPEECH (Discontinued)',
+    tagline: "Handle VTuber's Discord server needs",
+    description: 'Help fans keep updated by hooking Twitter (X) and Youtube',
+    year: '2021',
+    stack: ['Java Script', 'Discord'], 
+    color: '#5b8def', 
+    images: ['/projects/speech_mascot_light.png'], // shown in the light theme
+    darkImages: ['/projects/speech_mascot_dark.png'], // shown in the dark theme
+    imageShape: 'mockup',
+    emoji: '🗣️',
     links: [
-      { kind: 'github', href: '#' }, // TODO: real link
-      { kind: 'website', href: '#' }, // TODO: real link (or remove)
-    ],
+      { kind: 'github', href: 'https://github.com/terre29/SPEECH-Bot'}
+    ], // TODO: add an app-store / github / website link
   },
 ]
