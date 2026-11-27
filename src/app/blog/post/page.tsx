@@ -5,7 +5,7 @@ import remarkGfm from 'remark-gfm'
 import Tag from '../../../components/Tag'
 import TableOfContents from '../../../components/TableOfContents'
 import { useActiveHeading } from '../../../hooks/useActiveHeading'
-import { formatDate, getHeadings, sortedPosts } from '../../../posts'
+import { formatDate, getHeadings, sortedPosts, tagUrl } from '../../../posts'
 
 export default function PostPage() {
   // The :slug part of the URL, e.g. /blog/learning-tailwind-css -> "learning-tailwind-css"
@@ -49,8 +49,9 @@ export default function PostPage() {
             {post.title}
           </h1>
           <div className="mt-4 flex flex-wrap gap-2">
+            {/* Each tag links to the blog, filtered to that tag */}
             {post.tags.map((tag) => (
-              <Tag key={tag} name={tag} />
+              <Tag key={tag} name={tag} to={tagUrl(tag)} />
             ))}
           </div>
         </header>

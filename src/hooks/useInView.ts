@@ -18,7 +18,13 @@ export function useInView() {
           observer.disconnect() // stop watching: animate only the FIRST time
         }
       },
-      { threshold: 0.9 }, // "in view" = at least 90% of it is on screen
+      // "in view" = the section's top has reached the lower 80% of the screen.
+      //   threshold: 0     -> any part of it counts, so it works for tall sections too
+      //                       (a % threshold like 0.9 can never be reached when the section
+      //                        is taller than the screen, which happens on phones)
+      //   rootMargin       -> top, right, bottom, left: -20% on the bottom ignores the lowest
+      //                       fifth of the screen, so it waits until the section is a bit further up
+      { threshold: 0, rootMargin: '0px 0px -20% 0px' },
     )
 
     observer.observe(element)

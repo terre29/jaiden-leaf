@@ -23,7 +23,7 @@ export default function AboutPage() {
       {/* ------------ Resume ------------*/}
       <Section title="Resume">
         <a
-          href="/resume.pdf"
+          href="https://drive.google.com/file/d/19t3PJZYmzcKdqGVdG8LORsnhc02W_LoK/view?usp=share_link"
           download="Terretino.pdf"
           className="inline-block rounded-md bg-leaf px-4 py-2 text-sm font-semibold text-bg transition-opacity hover:opacity-90"
         >
