@@ -2,10 +2,11 @@ import type { CSSProperties } from 'react'
 import LinkButton from '../LinkButton'
 import ProjectVisual from '../ProjectVisual'
 import type { ShowcaseProps } from '../ProjectShowcase'
+import { useInView } from '../../../hooks/useInView'
 
 export default function ItzTimeShowcase({ project, index }: ShowcaseProps) {
     const flipped = index % 2 === 1
-
+    const { ref, inView } = useInView()
     // 0 -> "01", 1 -> "02". padStart adds a leading 0 until the text is 2 characters long.
     const number = String(index + 1).padStart(2, '0')
 
@@ -19,6 +20,7 @@ export default function ItzTimeShowcase({ project, index }: ShowcaseProps) {
           items-center    -> text and picture centred vertically against each other
         */
         <section
+            ref={ref}
             style={{ '--brand': project.color } as CSSProperties}
             className="grid items-center gap-12 py-10 md:grid-cols-2 md:gap-16 md:py-16"
         >
@@ -28,7 +30,11 @@ export default function ItzTimeShowcase({ project, index }: ShowcaseProps) {
             On wide screens: normal projects put the text first (left), flipped ones keep it last (right).
             The HTML order never changes, only where it's drawn.
           */}
-            <div className={flipped ? 'order-last' : 'order-last md:order-first'}>
+            <div className={[
+                flipped ? 'order-last' : 'order-last md:order-first',
+                'transition duration-700 ease-out',
+                inView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12',
+            ].join(' ')}>
                 {/*
                   Spacing: only mt- (margin-top) is used, so each gap is set by ONE class.
                   (A mb- above an mt- doesn't add up: the browser only keeps the bigger one.)
@@ -60,9 +66,15 @@ export default function ItzTimeShowcase({ project, index }: ShowcaseProps) {
                     </div>
                 )}
             </div>
-
-            {/* ---------- PICTURE ---------- */}
-            <ProjectVisual project={project} />
-        </section>
+            <div
+                className={[
+                    'transition duration-700 ease-out delay-200',
+                    inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12',
+                ].join(' ')}
+            >
+                {/* ---------- PICTURE ---------- */}
+                <ProjectVisual project={project} />
+            </div>
+        </section >
     )
 }

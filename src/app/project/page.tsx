@@ -24,7 +24,7 @@ export default function ProjectPage() {
         </h1>
         {/* TODO: your own one-liner */}
         <p className="mt-4 max-w-xl text-lg text-muted">
-          A few projects I'm proud of, from idea to the App Store.
+          A few projects I create in my free times.
         </p>
       </header>
 
