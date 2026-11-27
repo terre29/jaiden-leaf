@@ -1,0 +1,16 @@
+# Settings Netlify reads when it builds your site.
+
+[build]
+  command = "npm run build"   # the same command you run locally
+  publish = "dist"            # the folder to put online after building
+
+[build.environment]
+  NODE_VERSION = "24"         # build with Node 24 (long-term support)
+
+# Single-page app fix: any address that isn't a real file (like /blog or /about)
+# gets index.html, and React Router shows the right page.
+# status = 200 -> serve it as a normal page, not as a 404.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
