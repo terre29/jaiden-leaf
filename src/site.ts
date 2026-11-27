@@ -10,7 +10,7 @@ export const site = {
     { label: 'Blog', to: '/blog', icon: 'blog' },
     { label: 'About Me', to: '/about', icon: 'person' },
     { label: 'Project', to: '/project', icon: 'soil' },
-    { label: 'Book', to: '/book', icon: 'book' },
+    // { label: 'Book', to: '/book', icon: 'book' },
   ],
   author: {
     name: 'Terretino',

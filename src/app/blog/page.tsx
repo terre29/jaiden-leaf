@@ -1,4 +1,5 @@
 import { Link, useSearchParams } from 'react-router'
+import EmptyState from '../../components/EmptyState'
 import PostList from '../../components/PostList'
 import Tag from '../../components/Tag'
 import { filterPosts, getTopTags, sortedPosts } from '../../posts'
@@ -45,11 +46,30 @@ export default function BlogPage() {
       ? [...topTags, { name: activeTag, count: undefined }]
       : topTags
 
+  // No posts written yet: a search bar and tags would have nothing to work on,
+  // so show only a friendly message. Returning early = the rest of the page isn't drawn.
+  // (Like `guard !posts.isEmpty else { return EmptyView }` in Swift.)
+  if (sortedPosts.length === 0) {
+    return (
+      <div className="mx-auto max-w-5xl">
+        <h1 className="text-3xl font-bold tracking-tight">Blog</h1>
+        <div className="mt-8">
+          <EmptyState
+            emoji="🌱"
+            title="No posts yet"
+            message="The first one is still growing. Check back soon!"
+          />
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="mx-auto max-w-5xl">
       <h1 className="text-3xl font-bold tracking-tight">Blog</h1>
       <p className="mt-2 text-muted">
-        {sortedPosts.length} posts.
+        {/* 1 post / 2 posts: the word follows the number */}
+        {sortedPosts.length} {sortedPosts.length === 1 ? 'post' : 'posts'}.
       </p>
 
       {/* ---------- Search bar ---------- */}
@@ -141,14 +161,13 @@ export default function BlogPage() {
         {results.length > 0 ? (
           <PostList posts={results} activeTag={activeTag} />
         ) : (
-          // Empty state: say what happened and offer a way out, instead of a blank page
-          <div className="rounded-lg border border-dashed border-line px-6 py-12 text-center">
-            <p className="text-lg font-semibold">No posts found 🍂</p>
-            <p className="mt-2 text-sm text-muted">Try a different word, or another tag.</p>
-            <Link to="/blog" className="mt-4 inline-block text-sm text-leaf hover:underline">
-              Show all posts
-            </Link>
-          </div>
+          // Posts exist, but none match the search/tag: say so and offer a way back
+          <EmptyState
+            emoji="🍂"
+            title="No posts found"
+            message="Try a different word, or another tag."
+            action={{ label: 'Show all posts', to: '/blog' }}
+          />
         )}
       </div>
     </div>
