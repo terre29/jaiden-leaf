@@ -5,12 +5,12 @@
 // What you're up to at the moment. Change `updated` whenever you edit the items,
 // so visitors know how fresh it is.
 export const now = {
-  updated: '2026-11-24', // YYYY-MM-DD
+  updated: '2026-11-27',
   items: [
     // TODO: replace these with your own
     { label: 'Working on', text: 'iOS apps at my day job.' },
     { label: 'Learning', text: 'Web development: React, TypeScript and Tailwind, by building this site.' },
-    { label: 'Reading', text: 'Atomic Habits by James Clear.' },
+    { label: 'Reading', text: 'Love Works by Amy C. Edmondson.' },
     { label: 'Playing', text: 'Genshin Impact & Crusader Kings III' }
   ],
 }
@@ -39,18 +39,46 @@ export const books: Book[] = [
     genre: 'Habits',
   },
   {
-    slug: 'norwegian-wood',
-    title: 'Norwegian Wood',
-    author: 'Haruki Murakami',
+    slug: 'miserere',
+    title: 'Miserere',
+    author: 'Choi Nan-young',
     type: 'Novel',
-    genre: 'Coming-of-age',
+    genre: 'Thriller',
   },
   {
-    slug: 'the-old-man-and-the-sea',
-    title: 'The Old Man and the Sea',
-    author: 'Ernest Hemingway',
-    type: 'Literature',
-    genre: 'Classic',
+    slug: 'the-mountain-is-you',
+    title: 'The Mountain Is You',
+    author: 'Brianna Wiest',
+    type: 'Self Improvement',
+    genre: 'Self Development',
+  },
+  {
+    slug: 'be-the-unicorn',
+    title: 'Be The Unicorn',
+    author: 'William Vanderbloemen',
+    type: 'Self Improvement',
+    genre: 'Self Development',
+  },
+  {
+    slug: 'get-anyone-to-do-anything',
+    title: 'Get Anyone to Do Anything',
+    author: 'David J. Lieberman',
+    type: 'Self Improvement',
+    genre: 'Social Skills',
+  },
+  {
+    slug: 'ikigai',
+    title: 'Ikigai',
+    author: 'Hector Garcia & Francesc Miralles',
+    type: 'Self Improvement',
+    genre: 'Self Development',
+  },
+  {
+    slug: 'bicara-itu-ada-seninya',
+    title: 'Bicara itu Ada Seninya',
+    author: 'Oh Su-hyang',
+    type: 'Self Improvement',
+    genre: 'Social Skills',
   },
 ]
 
