@@ -5,11 +5,12 @@ export const site = {
   // Short line shown under the name in the sidebar.
   tagline: "I'm Terretino, I'm a professional iOS Developer" +
     "and has been developing iOS App since 2020. This is my digital playground where I can share my thoughts", // TODO: finish this sentence
+  // icon: which picture to show next to the label (see src/components/NavIcons.tsx)
   nav: [
-    { label: 'Blog', to: '/blog' },
-    { label: 'About Me', to: '/about' },
-    { label: 'Project', to: '/project' },
-    { label: 'Book', to: '/book' }
+    { label: 'Blog', to: '/blog', icon: 'blog' },
+    { label: 'About Me', to: '/about', icon: 'person' },
+    { label: 'Project', to: '/project', icon: 'soil' },
+    { label: 'Book', to: '/book', icon: 'book' },
   ],
   author: {
     name: 'Terretino', // TODO: your name

@@ -1,5 +1,6 @@
 import { Link, NavLink } from 'react-router'
 import { site } from '../site'
+import NavIcon from './NavIcons'
 import SocialLinks from './SocialLinks'
 import ThemeToggle from './ThemeToggle'
 import { useState } from 'react'
@@ -111,13 +112,15 @@ export default function Header() {
                 // so the current page link can look different.
                 className={({ isActive }) =>
                   [
-                    'rounded-md px-3 py-1.5 text-sm font-medium transition-colors',
+                    // flex items-center gap-2 -> icon and label side by side, centred, with a small gap
+                    'flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-medium transition-colors',
                     isActive
                       ? 'bg-leaf/25 font-semibold text-leaf lg:bg-leaf-soft lg:font-medium'                          // current page
                       : 'text-muted hover:bg-surface hover:text-ink',     // other links
                   ].join(' ')
                 }
               >
+                <NavIcon name={item.icon} />
                 {item.label}
               </NavLink>
             ))}

@@ -18,7 +18,7 @@ export function useInView() {
           observer.disconnect() // stop watching: animate only the FIRST time
         }
       },
-      { threshold: 1 }, // "in view" = at least 20% of it is on screen
+      { threshold: 0.9 }, // "in view" = at least 90% of it is on screen
     )
 
     observer.observe(element)
